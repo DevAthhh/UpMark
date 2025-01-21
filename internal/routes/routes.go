@@ -34,7 +34,7 @@ func Route(rtr *gin.Engine) {
 }
 
 func create_or_update(b Msg) {
-	file, err := os.OpenFile("data/"+b.Name, os.O_CREATE|os.O_WRONLY, 0644)
+	file, err := os.OpenFile("data/"+b.Name, os.O_CREATE|os.O_WRONLY, 0755)
 	if err != nil {
 		panic(err)
 	}
