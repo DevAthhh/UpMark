@@ -34,16 +34,16 @@ func Route(rtr *gin.Engine) {
 }
 
 func create_or_update(b Msg) {
-	file, err := os.OpenFile("data/"+b.Name, os.O_CREATE|os.O_WRONLY, 0755)
-	if err != nil {
-		panic(err)
-	}
-	defer file.Close()
-
-	_, err = file.WriteString(b.Body)
-	if err != nil {
-		panic(err)
-	}
+	file, err := os.OpenFile("data/"+b.Name, os.O_RDWR|os.O_TRUNC|os.O_CREATE, 0644)
+	    if err!= nil {
+	        panic(err)
+	    }
+	    defer file.Close()
+	
+	    _, err = file.WriteString(b.Body)
+	    if err!= nil {
+	        panic(err)
+	    }
 }
 
 func search_file(name string) string {
